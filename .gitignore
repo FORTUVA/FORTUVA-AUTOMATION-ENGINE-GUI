@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.spec.bak
+*.manifest
+*.exe
+*.app
+*.dmg
+*.AppImage
+*.AppDir
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Project specific
+id.json
+*.log
+*.bak
+*.tmp
+
+# Build tools
+appimagetool-*.AppImage
+
+# Qt
+*.qmlc
+*.jsc
+
+# Compiled UI files (if regenerated)
+# ui_*.py
+
+# Settings (keep for reference, but may want to ignore user-specific)
+# *.ini
+# *.conf
+
+# Release binaries (use GitHub Releases instead)
+releases/**/*.zip
+releases/**/*.tar.gz
+releases/**/*.exe
+releases/**/*.AppImage

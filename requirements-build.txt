@@ -1,0 +1,6 @@
+# Build Requirements for Creating Executables
+# Install these in addition to requirements.txt
+
+pyinstaller>=6.0.0
+setuptools>=68.0.0
+
