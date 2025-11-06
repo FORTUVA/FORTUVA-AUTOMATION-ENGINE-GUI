@@ -35,7 +35,7 @@ A sophisticated GUI application for automated Solana blockchain prediction betti
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd modern-login
+   cd FORTUVA_AUTOMATION_ENGINE_GUI
    ```
 
 2. **Install dependencies**
@@ -230,8 +230,8 @@ Network:
   - RPC URL
 
 Timing:
-  - Bet Time (0-3600s)
-  - Interval Time (1-3600s)
+  - Bet Time (10-180s)
+  - Interval Time (1s~)
   - Min Wallet Balance
 
 Even Round Strategy:
@@ -435,18 +435,6 @@ This software is provided "as is" without warranty of any kind. Use at your own 
 - Test thoroughly before production use
 
 The developers are not responsible for any financial losses incurred while using this software.
-
----
-
-## 🎯 Roadmap
-
-- [ ] Enhanced strategies and AI predictions
-- [ ] Multi-wallet support
-- [ ] Advanced statistics and analytics
-- [ ] Mobile app version
-- [ ] Docker containerization
-- [ ] Automated testing suite
-- [ ] Plugin system for custom strategies
 
 ---
 
