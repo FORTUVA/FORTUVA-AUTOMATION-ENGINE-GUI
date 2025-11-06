@@ -15,9 +15,9 @@ Your project is now ready to create executable files for Windows, macOS, and Lin
 - **README.md** - Build scripts documentation
 
 ### PyInstaller Spec Files
-- **FortuvaBot.spec** - Windows configuration
-- **FortuvaBot-mac.spec** - macOS configuration
-- **FortuvaBot-linux.spec** - Linux configuration
+- **FortuvaEngine.spec** - Windows configuration
+- **FortuvaEngine-mac.spec** - macOS configuration
+- **FortuvaEngine-linux.spec** - Linux configuration
 
 ### Documentation
 - **BUILDING_EXECUTABLES.md** - User-friendly quick start guide
@@ -67,9 +67,9 @@ python build_scripts/build_appimage.py
 
 ### Step 3: Find Your Executable
 
-- **Windows**: `dist/FortuvaBot/FortuvaBot.exe`
-- **macOS**: `dist/FortuvaBot.app`
-- **Linux**: `dist/FortuvaBot/FortuvaBot` or `dist/FortuvaBot-x86_64.AppImage`
+- **Windows**: `dist/FortuvaEngine/FortuvaEngine.exe`
+- **macOS**: `dist/FortuvaEngine.app`
+- **Linux**: `dist/FortuvaEngine/FortuvaEngine` or `dist/FortuvaEngine-x86_64.AppImage`
 
 ---
 
@@ -110,8 +110,8 @@ python build_scripts/build_all.py
 # 4. Find your executable in dist/ folder
 
 # 5. Test it!
-cd dist/FortuvaBot
-./FortuvaBot  # or FortuvaBot.exe on Windows
+cd dist/FortuvaEngine
+./FortuvaEngine  # or FortuvaEngine.exe on Windows
 ```
 
 That's it! 🎉
@@ -191,7 +191,7 @@ hiddenimports=['missing_module_name'],
 
 ### "App is damaged" (macOS)
 ```bash
-xattr -cr dist/FortuvaBot.app
+xattr -cr dist/FortuvaEngine.app
 ```
 
 ### Missing libraries (Linux)
@@ -319,7 +319,7 @@ Typical output sizes:
 
 ## 🎉 Success!
 
-You're all set to create professional executable distributions of your Fortuva Bot!
+You're all set to create professional executable distributions of your Fortuva Engine!
 
 ### What You Can Do Now:
 

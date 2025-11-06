@@ -1,4 +1,4 @@
-"""Fortuva prediction bot package."""
+"""Fortuva prediction engine package."""
 
 from .api import FortuvaApi
 from .worker import BotWorker, BotConfig

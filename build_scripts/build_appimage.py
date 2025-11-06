@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-AppImage Build Script for Fortuva Bot
+AppImage Build Script for Fortuva Engine
 Creates an AppImage for Linux that works across distributions
 
 Requirements:
@@ -48,22 +48,22 @@ def create_desktop_file(appdir):
     """Create .desktop file for AppImage"""
     desktop_content = """[Desktop Entry]
 Type=Application
-Name=Fortuva Bot
-Comment=Solana Prediction Bot
-Exec=FortuvaBot
-Icon=fortuva-bot
+Name=Fortuva Engine
+Comment=Solana Prediction Engine
+Exec=FortuvaEngine
+Icon=fortuva-engine
 Categories=Finance;Utility;
 Terminal=false
 """
     
-    desktop_file = appdir / "FortuvaBot.desktop"
+    desktop_file = appdir / "FortuvaEngine.desktop"
     desktop_file.write_text(desktop_content)
     os.chmod(desktop_file, 0o755)
     print(f"✓ Created {desktop_file.name}")
 
 def main():
     print("=" * 60)
-    print("Building AppImage for Fortuva Bot")
+    print("Building AppImage for Fortuva Engine")
     print("=" * 60)
     
     # Check if running on Linux
@@ -78,8 +78,8 @@ def main():
     print(f"\n📁 Project root: {project_root}")
     
     # Check if Linux build exists
-    dist_folder = project_root / "dist" / "FortuvaBot"
-    exe_path = dist_folder / "FortuvaBot"
+    dist_folder = project_root / "dist" / "FortuvaEngine"
+    exe_path = dist_folder / "FortuvaEngine"
     
     if not exe_path.exists():
         print(f"❌ Linux executable not found: {exe_path}")
@@ -93,7 +93,7 @@ def main():
     
     # Create AppDir structure
     print("\n📦 Creating AppDir structure...")
-    appdir = project_root / "FortuvaBot.AppDir"
+    appdir = project_root / "FortuvaEngine.AppDir"
     
     # Clean previous AppDir
     if appdir.exists():
@@ -111,16 +111,16 @@ def main():
     
     # Copy executable and dependencies
     print("   Copying files...")
-    shutil.copytree(dist_folder, appdir / "usr" / "bin" / "FortuvaBot")
+    shutil.copytree(dist_folder, appdir / "usr" / "bin" / "FortuvaEngine")
     
     # Create AppRun script
     apprun_content = """#!/bin/bash
 SELF=$(readlink -f "$0")
 HERE=${SELF%/*}
-export PATH="${HERE}/usr/bin/FortuvaBot:${PATH}"
+export PATH="${HERE}/usr/bin/FortuvaEngine:${PATH}"
 export LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"
-cd "${HERE}/usr/bin/FortuvaBot"
-exec "${HERE}/usr/bin/FortuvaBot/FortuvaBot" "$@"
+cd "${HERE}/usr/bin/FortuvaEngine"
+exec "${HERE}/usr/bin/FortuvaEngine/FortuvaEngine" "$@"
 """
     
     apprun = appdir / "AppRun"
@@ -133,8 +133,8 @@ exec "${HERE}/usr/bin/FortuvaBot/FortuvaBot" "$@"
     
     # Copy icon
     icon_src = project_root / "icons" / "rocket_48x48.png"
-    icon_dest = appdir / "fortuva-bot.png"
-    icon_dest2 = appdir / "usr" / "share" / "icons" / "hicolor" / "48x48" / "apps" / "fortuva-bot.png"
+    icon_dest = appdir / "fortuva-enginepng"
+    icon_dest2 = appdir / "usr" / "share" / "icons" / "hicolor" / "48x48" / "apps" / "fortuva-enginepng"
     
     if icon_src.exists():
         shutil.copy(icon_src, icon_dest)
@@ -143,7 +143,7 @@ exec "${HERE}/usr/bin/FortuvaBot/FortuvaBot" "$@"
     
     # Build AppImage
     print("\n🔨 Building AppImage...")
-    appimage_output = project_root / "dist" / "FortuvaBot-x86_64.AppImage"
+    appimage_output = project_root / "dist" / "FortuvaEngine-x86_64.AppImage"
     
     # Remove old AppImage
     if appimage_output.exists():
@@ -173,12 +173,12 @@ exec "${HERE}/usr/bin/FortuvaBot/FortuvaBot" "$@"
             print(f"\n📊 Size: {appimage_output.stat().st_size / (1024*1024):.2f} MB")
             
             print(f"\n💡 To distribute:")
-            print(f"   Upload FortuvaBot-x86_64.AppImage")
+            print(f"   Upload FortuvaEngine-x86_64.AppImage")
             print(f"   Works on most Linux distributions (Ubuntu, Fedora, Debian, etc.)")
             
             print(f"\n🚀 To run:")
-            print(f"   1. Make executable: chmod +x FortuvaBot-x86_64.AppImage")
-            print(f"   2. Run: ./FortuvaBot-x86_64.AppImage")
+            print(f"   1. Make executable: chmod +x FortuvaEngine-x86_64.AppImage")
+            print(f"   2. Run: ./FortuvaEngine-x86_64.AppImage")
             
             # Clean up AppDir
             print("\n🧹 Cleaning up...")

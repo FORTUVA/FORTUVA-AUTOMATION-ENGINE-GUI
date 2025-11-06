@@ -15,10 +15,10 @@ Done! ✅
 
 | Platform | Command | Output |
 |----------|---------|--------|
-| **Windows** | `python build_scripts/build_windows.py` | `dist/FortuvaBot/FortuvaBot.exe` |
-| **macOS** | `python build_scripts/build_macos.py` | `dist/FortuvaBot.app` |
-| **Linux** | `python build_scripts/build_linux.py` | `dist/FortuvaBot/FortuvaBot` |
-| **Linux AppImage** | `python build_scripts/build_appimage.py` | `dist/FortuvaBot-x86_64.AppImage` |
+| **Windows** | `python build_scripts/build_windows.py` | `dist/FortuvaEngine/FortuvaEngine.exe` |
+| **macOS** | `python build_scripts/build_macos.py` | `dist/FortuvaEngine.app` |
+| **Linux** | `python build_scripts/build_linux.py` | `dist/FortuvaEngine/FortuvaEngine` |
+| **Linux AppImage** | `python build_scripts/build_appimage.py` | `dist/FortuvaEngine-x86_64.AppImage` |
 | **Auto-detect** | `python build_scripts/build_all.py` | Platform-specific |
 
 ---
@@ -38,7 +38,7 @@ python build_scripts/build_all.py
 
 ### Missing Module
 
-Edit `FortuvaBot.spec` (or platform-specific .spec):
+Edit `FortuvaEngine.spec` (or platform-specific .spec):
 ```python
 hiddenimports=['your_missing_module'],
 ```
@@ -46,8 +46,8 @@ hiddenimports=['your_missing_module'],
 ### Executable Won't Run
 
 **Windows**: Right-click → Properties → Unblock
-**macOS**: `xattr -cr FortuvaBot.app`
-**Linux**: `chmod +x FortuvaBot`
+**macOS**: `xattr -cr FortuvaEngine.app`
+**Linux**: `chmod +x FortuvaEngine`
 
 ---
 
@@ -58,9 +58,9 @@ hiddenimports=['your_missing_module'],
 - ✅ `pyinstaller` - Install: `pip install pyinstaller`
 
 ### Build Files (Included)
-- ✅ `FortuvaBot.spec` - Windows config
-- ✅ `FortuvaBot-mac.spec` - macOS config
-- ✅ `FortuvaBot-linux.spec` - Linux config
+- ✅ `FortuvaEngine.spec` - Windows config
+- ✅ `FortuvaEngine-mac.spec` - macOS config
+- ✅ `FortuvaEngine-linux.spec` - Linux config
 - ✅ `build_scripts/*.py` - Build automation
 
 ### Output (After Building)
@@ -156,7 +156,7 @@ exe = EXE(
     a.zipfiles,  # Add these
     a.datas,     # Add these
     [],
-    name='FortuvaBot',
+    name='FortuvaEngine',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

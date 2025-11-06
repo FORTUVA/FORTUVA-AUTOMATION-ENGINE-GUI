@@ -1,10 +1,10 @@
-# Fortuva Auto-Bet Bot - Python Implementation
+# Fortuva Auto-Bet Engine - Python Implementation
 
-This Python implementation fully mirrors the TypeScript bot logic from the `ts/` directory, providing comprehensive Solana blockchain integration for automated prediction betting.
+This Python implementation fully mirrors the TypeScript engine logic from the `ts/` directory, providing comprehensive Solana blockchain integration for automated prediction betting.
 
 ## 🏗️ Architecture
 
-The bot is structured into several key modules:
+The engine is structured into several key modules:
 
 ### Core Modules
 
@@ -53,7 +53,7 @@ The bot is structured into several key modules:
 
 ### Betting Strategy
 
-The bot supports sophisticated betting strategies matching the TypeScript implementation:
+The engine supports sophisticated betting strategies matching the TypeScript implementation:
 
 #### Even Round Configuration
 - Min/Max bet amounts
@@ -79,7 +79,7 @@ The bot supports sophisticated betting strategies matching the TypeScript implem
 
 #### Martingale System
 
-The bot implements a martingale betting system:
+The engine implements a martingale betting system:
 ```
 bet_amount = base_amount × (multiplier ^ failed_bet_count)
 ```
@@ -100,14 +100,14 @@ bet_amount = base_amount × (multiplier ^ failed_bet_count)
 
 ### Maintenance Operations
 
-Every 60 seconds, the bot automatically:
+Every 60 seconds, the engine automatically:
 1. **Claims** all winning bets
 2. **Cancels** bets from cancelled rounds (status 4)
 3. **Closes** completed bets to recover rent
 
 ## 🔑 Wallet Support
 
-The bot supports multiple wallet key formats:
+The engine supports multiple wallet key formats:
 
 1. **Base58 encoded string**: `"5KQ8fpN..."` 
 2. **JSON array**: `"[123, 45, 67, ...]"` (64 bytes)
@@ -157,7 +157,7 @@ All transactions use Solana's VersionedTransaction with MessageV0:
 
 ## 🔄 Workflow Comparison
 
-### TypeScript Flow (ts/core/FortuvaBot.ts)
+### TypeScript Flow (ts/core/FortuvaEngine.ts)
 
 ```typescript
 1. Initialize wallet, connection, program
@@ -166,7 +166,7 @@ All transactions use Solana's VersionedTransaction with MessageV0:
 4. Start maintenance loop (claim/cancel/close every 60s)
 ```
 
-### Python Flow (bot/worker.py)
+### Python Flow (engine/worker.py)
 
 ```python
 1. Initialize wallet, connection, services
@@ -190,19 +190,19 @@ PyQt5                # GUI framework
 
 ## 🚀 Usage
 
-The bot is integrated into the PyQt5 GUI (`main.py`):
+The engine is integrated into the PyQt5 GUI (`main.py`):
 
 1. Configure wallet (keypair file or private key)
 2. Set betting parameters in GUI
 3. Click "Start" button
-4. Bot initializes and starts all services
+4. Engine initializes and starts all services
 5. Monitor logs in the GUI panel
 
 ## 🔍 Logging
 
-The bot emits timestamped logs for all operations:
+The engine emits timestamped logs for all operations:
 
-- 🚀 Bot startup/shutdown
+- 🚀 Engine startup/shutdown
 - ⚙️ Configuration display
 - 🔑 Wallet loading
 - 🌐 RPC connection
@@ -258,7 +258,7 @@ This matches the TypeScript `RuntimeConfig` exactly.
 
 ### None!
 
-This Python implementation is a faithful port of the TypeScript bot:
+This Python implementation is a faithful port of the TypeScript engine:
 
 ✅ Same betting strategy logic  
 ✅ Same martingale calculations  
@@ -281,7 +281,7 @@ The only differences are:
 3. **Interactive Runtime Control**: Add user input service (like TypeScript's 'S' key)
 4. **Enhanced Logging**: Add log levels and file output
 5. **WebSocket Support**: Real-time round updates instead of polling
-6. **Multi-Wallet Support**: Run bot with multiple wallets simultaneously
+6. **Multi-Wallet Support**: Run engine with multiple wallets simultaneously
 
 ## 🛡️ Security Notes
 

@@ -32,10 +32,10 @@
 ┌─────────────────────────────────────────────────────────────────┐
 │                    Step 3: Get Your Executable                    │
 │                                                                   │
-│  Windows:    dist/FortuvaBot/FortuvaBot.exe                      │
-│  macOS:      dist/FortuvaBot.app                                  │
-│  Linux:      dist/FortuvaBot/FortuvaBot                          │
-│              dist/FortuvaBot-x86_64.AppImage (if built)          │
+│  Windows:    dist/FortuvaEngine/FortuvaEngine.exe                      │
+│  macOS:      dist/FortuvaEngine.app                                  │
+│  Linux:      dist/FortuvaEngine/FortuvaEngine                          │
+│              dist/FortuvaEngine-x86_64.AppImage (if built)          │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -63,8 +63,8 @@ Start
   │   └─ Create .exe
   │
   └─→ Output
-      dist\FortuvaBot\FortuvaBot.exe
-      └─ Distribute entire FortuvaBot folder
+      dist\FortuvaEngine\FortuvaEngine.exe
+      └─ Distribute entire FortuvaEngine folder
 ```
 
 ### For macOS Users
@@ -89,13 +89,13 @@ Start
   │   └─ Generate .app
   │
   ├─→ (Optional) Code Sign
-  │   codesign --deep --force --sign "..." FortuvaBot.app
+  │   codesign --deep --force --sign "..." FortuvaEngine.app
   │
   ├─→ (Optional) Create DMG
-  │   hdiutil create -volname FortuvaBot -srcfolder dist/FortuvaBot.app ...
+  │   hdiutil create -volname FortuvaEngine -srcfolder dist/FortuvaEngine.app ...
   │
   └─→ Output
-      dist/FortuvaBot.app
+      dist/FortuvaEngine.app
       └─ Distribute .app or .dmg
 ```
 
@@ -112,7 +112,7 @@ Start
   │
   ├─→ Build Binary
   │   python build_scripts/build_linux.py
-  │   └─→ Output: dist/FortuvaBot/FortuvaBot
+  │   └─→ Output: dist/FortuvaEngine/FortuvaEngine
   │
   ├─→ (Recommended) Build AppImage
   │   python build_scripts/build_appimage.py
@@ -124,8 +124,8 @@ Start
   │   └─ Generate AppImage
   │
   └─→ Output
-      ├─ dist/FortuvaBot/FortuvaBot (binary)
-      └─ dist/FortuvaBot-x86_64.AppImage (universal)
+      ├─ dist/FortuvaEngine/FortuvaEngine (binary)
+      └─ dist/FortuvaEngine-x86_64.AppImage (universal)
 ```
 
 ## Cross-Platform Build Matrix
@@ -163,7 +163,7 @@ Start
        ├─→ Windows
        │   ├─ Test on clean Windows machine
        │   ├─ (Optional) Code sign with Authenticode
-       │   ├─ Zip FortuvaBot folder
+       │   ├─ Zip FortuvaEngine folder
        │   └─ OR Create installer with NSIS/Inno Setup
        │
        ├─→ macOS
@@ -204,11 +204,11 @@ Executable Doesn't Run?
     │
     ├─→ macOS
     │   ├─→ "Damaged" error? Right-click → Open
-    │   └─→ OR: xattr -cr FortuvaBot.app
+    │   └─→ OR: xattr -cr FortuvaEngine.app
     │
     └─→ Linux
         ├─→ Missing libraries? Use AppImage
-        └─→ Not executable? chmod +x FortuvaBot
+        └─→ Not executable? chmod +x FortuvaEngine
 ```
 
 ## CI/CD Integration
@@ -233,7 +233,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: windows-build
-          path: dist/FortuvaBot/
+          path: dist/FortuvaEngine/
 
   build-macos:
     runs-on: macos-latest
@@ -247,7 +247,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: macos-build
-          path: dist/FortuvaBot.app/
+          path: dist/FortuvaEngine.app/
 
   build-linux:
     runs-on: ubuntu-latest
@@ -265,8 +265,8 @@ jobs:
         with:
           name: linux-build
           path: |
-            dist/FortuvaBot/
-            dist/FortuvaBot-x86_64.AppImage
+            dist/FortuvaEngine/
+            dist/FortuvaEngine-x86_64.AppImage
 ```
 
 ## Quick Reference Commands
@@ -285,19 +285,19 @@ python build_scripts/build_linux.py      # Linux
 python build_scripts/build_appimage.py   # Linux AppImage
 
 # Manual PyInstaller (if needed)
-pyinstaller --clean FortuvaBot.spec           # Windows
-pyinstaller --clean FortuvaBot-mac.spec       # macOS
-pyinstaller --clean FortuvaBot-linux.spec     # Linux
+pyinstaller --clean FortuvaEngine.spec           # Windows
+pyinstaller --clean FortuvaEngine-mac.spec       # macOS
+pyinstaller --clean FortuvaEngine-linux.spec     # Linux
 
 # Test executable
-cd dist/FortuvaBot
-./FortuvaBot  # Linux/macOS
-FortuvaBot.exe  # Windows
+cd dist/FortuvaEngine
+./FortuvaEngine  # Linux/macOS
+FortuvaEngine.exe  # Windows
 
 # Distribution
-zip -r FortuvaBot-Windows.zip FortuvaBot/              # Windows/Linux
-hdiutil create -volname FortuvaBot -srcfolder \
-  FortuvaBot.app -ov -format UDZO FortuvaBot.dmg      # macOS
+zip -r FortuvaEngine-Windows.zip FortuvaEngine/              # Windows/Linux
+hdiutil create -volname FortuvaEngine -srcfolder \
+  FortuvaEngine.app -ov -format UDZO FortuvaEngine.dmg      # macOS
 ```
 
 ## Tips for Success

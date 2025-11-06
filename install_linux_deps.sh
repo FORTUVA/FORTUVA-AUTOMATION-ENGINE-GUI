@@ -1,11 +1,11 @@
 #!/bin/bash
-# FortuvaBot - Linux Dependency Installer
+# FortuvaEngine - Linux Dependency Installer
 # This script automatically detects your Linux distribution and installs required system libraries
 
 set -e
 
 echo "========================================"
-echo "FortuvaBot - Linux Dependency Installer"
+echo "FortuvaEngine - Linux Dependency Installer"
 echo "========================================"
 echo ""
 
@@ -109,8 +109,8 @@ esac
 echo ""
 echo "✅ Dependencies installed successfully!"
 echo ""
-echo "You can now run FortuvaBot:"
-echo "  ./FortuvaBot"
+echo "You can now run FortuvaEngine:"
+echo "  ./FortuvaEngine"
 echo ""
 echo "If you still encounter issues, see LINUX_TROUBLESHOOTING.md"
 

@@ -72,7 +72,7 @@ If you're on a Wayland system, try forcing Wayland:
 
 ```bash
 export QT_QPA_PLATFORM=wayland
-./FortuvaBot
+./FortuvaEngine
 ```
 
 #### Solution C: Run with Debug Output
@@ -81,7 +81,7 @@ To see more details about what's failing:
 
 ```bash
 export QT_DEBUG_PLUGINS=1
-./FortuvaBot
+./FortuvaEngine
 ```
 
 This will show which libraries are missing.
@@ -117,7 +117,7 @@ Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland
 
 ```bash
 export QT_QPA_PLATFORM=wayland
-./FortuvaBot
+./FortuvaEngine
 ```
 
 ### 3. "Aborted (core dumped)"
@@ -178,17 +178,17 @@ datas=[
     ('icons', 'icons'),
     ('img', 'img'),
     ('icons_rc.py', '.'),
-    ('bot', 'bot'),
+    ('engine', 'engine'),
 ]
 ```
 
 ### 6. Permission Denied
 
-**Error:** `bash: ./FortuvaBot: Permission denied`
+**Error:** `bash: ./FortuvaEngine: Permission denied`
 
 **Solution:** Make the file executable:
 ```bash
-chmod +x ./FortuvaBot
+chmod +x ./FortuvaEngine
 ```
 
 ## Testing Your Build
@@ -216,8 +216,8 @@ If you're still having problems, provide:
 1. Linux distribution and version: `cat /etc/os-release`
 2. Qt version: `python -c "from PyQt5.QtCore import QT_VERSION_STR; print(QT_VERSION_STR)"`
 3. Python version: `python --version`
-4. Output of: `QT_DEBUG_PLUGINS=1 ./FortuvaBot`
-5. Output of: `ldd ./FortuvaBot` (shows library dependencies)
+4. Output of: `QT_DEBUG_PLUGINS=1 ./FortuvaEngine`
+5. Output of: `ldd ./FortuvaEngine` (shows library dependencies)
 
 ## Alternative: Running Without Building
 

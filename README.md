@@ -1,10 +1,12 @@
-# Fortuva Bot - Solana Prediction Bot
+# Fortuva Automation Engine GUI - Solana Prediction Automation Engine GUI 
+
+🚀 **[Try Fortuva App Now](https://app.fortuva.xyz/?utm_source=github&utm_medium=readme&utm_campaign=automation_engine_gui)**
 
 [![Python: 3.x](https://img.shields.io/badge/python-3.x-blue?logo=python&logoColor=gold)](https://www.python.org/downloads)
 [![PyQt: 5.15.0](https://img.shields.io/badge/pyqt-5.15.0-darkgreen?logo=qt&logoColor=green)](https://pypi.org/project/PyQt5)
 [![Solana](https://img.shields.io/badge/Solana-Blockchain-purple?logo=solana)](https://solana.com)
 
-A sophisticated GUI application for automated Solana blockchain prediction betting with PyQt5.
+A sophisticated GUI application for automated Solana blockchain prediction trading with PyQt5.
 
 ---
 
@@ -12,13 +14,13 @@ A sophisticated GUI application for automated Solana blockchain prediction betti
 
 - 🎨 **Modern GUI**: Beautiful, dark-themed interface built with PyQt5
 - 🔐 **Wallet Support**: Import via keypair file, seed phrase, or private key
-- ⚙️ **Configurable Strategies**: Separate settings for even/odd round betting
-- 🤖 **Automated Betting**: Set it and forget it with auto-bet mode
+- ⚙️ **Configurable Strategies**: Separate settings for even/odd round predictions
+- 🤖 **Automated Trading**: Set it and forget it with auto-predict mode
 - 📊 **Live Stats**: Real-time round info, payouts, and wallet balance
-- 📈 **Bet History**: Track your bets with status and payout information
+- 📈 **Prediction History**: Track your predictions with status and payout information
 - 🔔 **Notifications**: In-app and system notifications for important events
 - 💾 **Persistent Settings**: Your configuration is saved automatically
-- 🎯 **Manual Betting**: Take control with manual bet placement
+- 🎯 **Manual Trading**: Take control with manual prediction placement
 - 📱 **Collapsible Panels**: Maximize screen space by hiding panels
 
 ---
@@ -34,8 +36,8 @@ A sophisticated GUI application for automated Solana blockchain prediction betti
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd FORTUVA_AUTOMATION_ENGINE_GUI
+   git clone https://github.com/FORTUVA/FORTUVA-AUTOMATION-ENGINE-GUI.git
+   cd FORTUVA-AUTOMATION-ENGINE-GUI
    ```
 
 2. **Install dependencies**
@@ -61,14 +63,14 @@ Don't want to install Python or build from source? Download pre-built executable
 #### Windows
 📦 **[Download Windows Release (v1.0.0)](../../releases/download/v1.0.0/v1.0.0-windows.zip)**
 - Extract the ZIP file
-- Run `FortuvaBot.exe`
+- Run `FortuvaEngine.exe`
 - No Python installation required!
 
 #### Linux
 📦 **[Download Linux Release (v1.0.0)](../../releases/download/v1.0.0/v1.0.0-linux.zip)**
 - Extract the ZIP file
 - Install dependencies: `./install_linux_deps.sh`
-- Run `./FortuvaBot`
+- Run `./FortuvaEngine`
 - See [Linux User Guide](README_LINUX_USERS.md) for detailed instructions
 
 ### What's Included
@@ -86,7 +88,7 @@ Each release contains:
 3. **Linux users**: Run the dependency installer first
 4. Launch the application
 5. Configure your wallet and settings
-6. Start betting!
+6. Start predicting!
 
 ---
 
@@ -123,9 +125,9 @@ python build_scripts/build_appimage.py
 
 ### Output
 
-- **Windows**: `dist/FortuvaBot/FortuvaBot.exe`
-- **macOS**: `dist/FortuvaBot.app`
-- **Linux**: `dist/FortuvaBot/FortuvaBot` or `dist/FortuvaBot-x86_64.AppImage`
+- **Windows**: `dist/FortuvaEngine/FortuvaEngine.exe`
+- **macOS**: `dist/FortuvaEngine.app`
+- **Linux**: `dist/FortuvaEngine/FortuvaEngine` or `dist/FortuvaEngine-x86_64.AppImage`
 
 ### Detailed Build Instructions
 
@@ -177,38 +179,38 @@ sudo apt-get install -y libxcb-xinerama0 libxcb-icccm4 libxcb-image0 \
 - Or enter private key (base58 or hex format)
 - Or paste keypair JSON array
 
-### 2. Configure Bot Settings
+### 2. Configure Engine Settings
 
 #### Network
 - **RPC URL**: Solana RPC endpoint (default: mainnet-beta)
 
 #### Timing
-- **Bet Time**: Seconds before round ends to place bet
+- **Entry Time**: Seconds before round ends to place prediction
 - **Interval Time**: Seconds between checks
 
 #### Strategy (Even/Odd Rounds)
-- **Min/Max Bet**: Bet amount range in SOL
+- **Min/Max Amount**: Prediction amount range in SOL
 - **Multiplier**: Target payout multiplier
 - **Mode**: GENERAL or PAYOUT strategy
 - **Direction**: UP or DOWN prediction
 
 #### Options
-- **Considering Old Bets**: Factor in previous bets
-- **Auto Bet**: Enable automatic betting
+- **Considering Old Predictions**: Factor in previous predictions
+- **Auto Predict**: Enable automatic prediction trading
 
-### 3. Start Bot
+### 3. Start Engine
 
 1. Click "Set" to save configuration
 2. Click "Start" to begin
 3. Monitor logs and round info
-4. Use "Enter UP/DOWN" for manual bets
+4. Use "Enter UP/DOWN" for manual predictions
 
 ### 4. Features
 
 - **Collapsible Panels**: Click ◀/▶ to hide settings or logs
-- **Manual Betting**: Click "Enter UP" or "Enter DOWN" when ready
+- **Manual Trading**: Click "Enter UP" or "Enter DOWN" when ready
 - **Live Updates**: Round info updates automatically
-- **Bet History**: View recent bets in the table
+- **Prediction History**: View recent predictions in the table
 
 ---
 
@@ -217,9 +219,9 @@ sudo apt-get install -y libxcb-xinerama0 libxcb-icccm4 libxcb-image0 \
 ### Settings Location
 
 Settings are automatically saved to:
-- **Windows**: `%APPDATA%\modern-login\bot-config.ini`
-- **macOS**: `~/Library/Preferences/com.modern-login.bot-config.plist`
-- **Linux**: `~/.config/modern-login/bot-config.conf`
+- **Windows**: `%APPDATA%\modern-login\engine-config.ini`
+- **macOS**: `~/Library/Preferences/com.modern-login.engine-config.plist`
+- **Linux**: `~/.config/modern-login/engine-config.conf`
 
 ### Configuration Options
 
@@ -230,25 +232,25 @@ Network:
   - RPC URL
 
 Timing:
-  - Bet Time (10-180s)
+  - Entry Time (10-180s)
   - Interval Time (1s~)
   - Min Wallet Balance
 
 Even Round Strategy:
-  - Min/Max Bet Amount
+  - Min/Max Prediction Amount
   - Multiplier
   - Mode (GENERAL/PAYOUT)
   - Direction (UP/DOWN)
 
 Odd Round Strategy:
-  - Min/Max Bet Amount
+  - Min/Max Prediction Amount
   - Multiplier
   - Mode (GENERAL/PAYOUT)
   - Direction (UP/DOWN)
 
 Options:
-  - Considering Old Bets
-  - Auto Bet
+  - Considering Old Predictions
+  - Auto Predict
 ```
 
 ---
@@ -257,13 +259,13 @@ Options:
 
 ```
 modern-login/
-├── bot/                      # Bot logic modules
+├── engine/                  # Engine logic modules
 │   ├── api.py               # Fortuva API client
-│   ├── betting_service.py   # Betting logic
+│   ├── betting_service.py   # Prediction logic
 │   ├── blockchain.py        # Solana blockchain interaction
-│   ├── cancel_service.py    # Bet cancellation
+│   ├── cancel_service.py    # Prediction cancellation
 │   ├── claim_service.py     # Reward claiming
-│   ├── close_service.py     # Bet closing
+│   ├── close_service.py     # Prediction closing
 │   └── worker.py            # Background worker thread
 ├── build_scripts/           # Build automation
 │   ├── build_all.py         # Universal build
@@ -332,14 +334,14 @@ sudo apt install libxcb-xinerama0 libqt5widgets5
 - Check seed phrase has correct number of words
 - Verify private key format (base58/hex)
 
-### Bot Not Placing Bets
+### Engine Not Placing Predictions
 
 **Issue**: Insufficient balance
 - Check wallet balance in UI
 - Ensure balance > min wallet balance setting
 
-**Issue**: Auto bet disabled
-- Verify "Auto Bet" checkbox is checked
+**Issue**: Auto predict disabled
+- Verify "Auto Predict" checkbox is checked
 - Click "Set" to save settings
 
 ### Build Issues
@@ -369,10 +371,10 @@ See [Troubleshooting Section](BUILDING_EXECUTABLES.md#-troubleshooting) in build
 ⚠️ **Important Security Notes**:
 
 1. **Never share your private keys or seed phrases**
-2. **Use a dedicated wallet for betting** (don't use your main wallet)
-3. **Start with small amounts** to test the bot
+2. **Use a dedicated wallet for prediction trading** (don't use your main wallet)
+3. **Start with small amounts** to test the engine
 4. **Review all settings** before starting
-5. **Monitor bot activity** regularly
+5. **Monitor engine activity** regularly
 6. **Keep your Python environment updated**
 7. **Be cautious of RPC endpoints** (use trusted sources)
 
@@ -420,10 +422,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## ⚠️ Disclaimer
 
-This software is provided "as is" without warranty of any kind. Use at your own risk. Cryptocurrency betting involves financial risk. Always:
+This software is provided "as is" without warranty of any kind. Use at your own risk. Cryptocurrency prediction trading involves financial risk. Always:
 
 - Start with small amounts
-- Never bet more than you can afford to lose
+- Never risk more than you can afford to lose
 - Understand the risks involved
 - Comply with local laws and regulations
 - Test thoroughly before production use
@@ -442,9 +444,9 @@ Built with ❤️ using:
 
 ---
 
-**Happy Betting! 🎲**
+**Happy Predicting! 🎲**
 
-Remember to bet responsibly and only what you can afford to lose.
+Remember to trade responsibly and only risk what you can afford to lose.
 
 ---
 

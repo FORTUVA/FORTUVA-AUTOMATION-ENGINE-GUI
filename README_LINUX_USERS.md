@@ -1,10 +1,10 @@
-# FortuvaBot - Linux Installation Guide
+# FortuvaEngine - Linux Installation Guide
 
 ## Quick Start
 
 ### 1. Install Required System Libraries
 
-Before running FortuvaBot, you need to install some system libraries for the graphical interface.
+Before running FortuvaEngine, you need to install some system libraries for the graphical interface.
 
 **Ubuntu/Debian/Linux Mint:**
 ```bash
@@ -32,13 +32,13 @@ sudo pacman -S --needed libxcb xcb-util-wm xcb-util-image \
 ### 2. Make the Executable Runnable
 
 ```bash
-chmod +x FortuvaBot
+chmod +x FortuvaEngine
 ```
 
-### 3. Run FortuvaBot
+### 3. Run FortuvaEngine
 
 ```bash
-./FortuvaBot
+./FortuvaEngine
 ```
 
 ## Troubleshooting
@@ -51,26 +51,26 @@ You can also try:
 ```bash
 # See detailed plugin debug info
 export QT_DEBUG_PLUGINS=1
-./FortuvaBot
+./FortuvaEngine
 
 # Or try Wayland (if you use Wayland)
 export QT_QPA_PLATFORM=wayland
-./FortuvaBot
+./FortuvaEngine
 ```
 
 ### Error: "Permission denied"
 
 Make the file executable:
 ```bash
-chmod +x FortuvaBot
+chmod +x FortuvaEngine
 ```
 
 ### Error: "No such file or directory"
 
-Make sure you're in the same directory as the FortuvaBot executable:
+Make sure you're in the same directory as the FortuvaEngine executable:
 ```bash
-cd /path/to/FortuvaBot/directory
-./FortuvaBot
+cd /path/to/FortuvaEngine/directory
+./FortuvaEngine
 ```
 
 ### Still Having Issues?
@@ -82,13 +82,13 @@ cd /path/to/FortuvaBot/directory
 
 2. Verify all required libraries are installed:
    ```bash
-   ldd FortuvaBot | grep "not found"
+   ldd FortuvaEngine | grep "not found"
    ```
    If you see "not found", those libraries need to be installed.
 
 3. Try running from terminal to see error messages:
    ```bash
-   ./FortuvaBot
+   ./FortuvaEngine
    ```
 
 ## System Requirements
@@ -111,7 +111,7 @@ The application should work on any modern Linux distribution after installing th
 
 ## Running on Different Distributions
 
-If FortuvaBot doesn't work on your distribution:
+If FortuvaEngine doesn't work on your distribution:
 
 1. Make sure all system libraries are installed (see step 1)
 2. Check if your distribution uses an older glibc version
@@ -127,7 +127,7 @@ If FortuvaBot doesn't work on your distribution:
 
 ## Security Notes
 
-- FortuvaBot requires internet access to interact with the Solana blockchain
+- FortuvaEngine requires internet access to interact with the Solana blockchain
 - Your wallet private keys are stored locally and encrypted
 - Always verify you're running the official version from the official repository
 

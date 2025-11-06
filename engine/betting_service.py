@@ -55,7 +55,7 @@ class BettingService:
         self.client = client
         self.wallet = wallet
         self.api = api
-        self.config = config  # Bot configuration
+        self.config = config  # Engine configuration
         self.runtime_config = runtime_config
         self.log_callback = log_callback
         self.round_update_callback = round_update_callback

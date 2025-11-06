@@ -14,7 +14,7 @@ sudo apt-get install -y libxcb-xinerama0 libxcb-icccm4 libxcb-image0 \
     libgl1-mesa-glx libglib2.0-0
 
 # Then run
-./FortuvaBot
+./FortuvaEngine
 ```
 
 **Or use the automated script:**
@@ -55,7 +55,7 @@ python build_scripts/build_linux.py
 ### Qt Plugin Fix
 
 1. ✅ Created `pyqt5_hook.py` - runtime Qt configuration
-2. ✅ Updated `FortuvaBot-linux.spec` - better Qt plugin handling
+2. ✅ Updated `FortuvaEngine-linux.spec` - better Qt plugin handling
 3. ✅ Created `install_linux_deps.sh` - automated dependency installer
 4. ✅ Fixed table scrollbar visibility and size policies
 5. ✅ Reduced table minimum height from 200px to 150px
@@ -68,8 +68,8 @@ python build_scripts/build_linux.py
 
 When distributing your Linux build, include:
 ```
-📦 FortuvaBot-Linux/
-├── FortuvaBot                 # The executable
+📦 FortuvaEngine-linux/
+├── FortuvaEngine                 # The executable
 ├── README_LINUX_USERS.md      # User guide
 └── install_linux_deps.sh      # Dependency installer
 ```
@@ -93,14 +93,14 @@ When distributing your Linux build, include:
 ```bash
 # Debug mode
 export QT_DEBUG_PLUGINS=1
-./FortuvaBot
+./FortuvaEngine
 
 # Check missing libraries
-ldd ./FortuvaBot | grep "not found"
+ldd ./FortuvaEngine | grep "not found"
 
 # Try Wayland (if applicable)
 export QT_QPA_PLATFORM=wayland
-./FortuvaBot
+./FortuvaEngine
 ```
 
 See [LINUX_TROUBLESHOOTING.md](LINUX_TROUBLESHOOTING.md) for more solutions.

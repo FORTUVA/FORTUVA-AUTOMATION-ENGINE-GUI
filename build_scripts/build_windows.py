@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Windows Build Script for Fortuva Bot
+Windows Build Script for Fortuva Engine
 Builds a Windows executable using PyInstaller
 
 Requirements:
@@ -20,7 +20,7 @@ from pathlib import Path
 
 def main():
     print("=" * 60)
-    print("Building Fortuva Bot for Windows")
+    print("Building Fortuva Engine for Windows")
     print("=" * 60)
     
     # Get project root directory
@@ -39,7 +39,7 @@ def main():
         sys.exit(1)
     
     # Check if spec file exists
-    spec_file = project_root / "FortuvaBot.spec"
+    spec_file = project_root / "FortuvaEngine.spec"
     if not spec_file.exists():
         print(f"[ERROR] Spec file not found: {spec_file}")
         sys.exit(1)
@@ -70,7 +70,7 @@ def main():
         result = subprocess.run(cmd, check=True, capture_output=False)
         
         # Check if executable was created
-        exe_path = project_root / "dist" / "FortuvaBot" / "FortuvaBot.exe"
+        exe_path = project_root / "dist" / "FortuvaEngine" / "FortuvaEngine.exe"
         if exe_path.exists():
             print("\n" + "=" * 60)
             print("[SUCCESS] Build successful!")
@@ -80,14 +80,14 @@ def main():
             print(f"\n[*] Size: {exe_path.stat().st_size / (1024*1024):.2f} MB")
             
             # Create distribution folder
-            dist_folder = project_root / "dist" / "FortuvaBot"
+            dist_folder = project_root / "dist" / "FortuvaEngine"
             print(f"\n[*] Distribution folder:")
             print(f"    {dist_folder}")
             print(f"\n[*] To distribute:")
             print(f"    1. Zip the entire '{dist_folder.name}' folder")
             print(f"    2. Or create an installer with NSIS/Inno Setup")
             print(f"\n[*] To run:")
-            print(f"    Double-click FortuvaBot.exe")
+            print(f"    Double-click FortuvaEngine.exe")
             
         else:
             print("\n[ERROR] Build failed: Executable not found")

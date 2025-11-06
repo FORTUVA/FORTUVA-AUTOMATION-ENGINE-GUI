@@ -1,6 +1,6 @@
 # Build Scripts Directory
 
-This directory contains all the scripts needed to build executable versions of Fortuva Bot for different platforms.
+This directory contains all the scripts needed to build executable versions of Fortuva Engine for different platforms.
 
 ## Files Overview
 
@@ -12,9 +12,9 @@ This directory contains all the scripts needed to build executable versions of F
 - **`build_appimage.py`** - Build Linux AppImage (universal Linux package)
 
 ### Spec Files (in project root)
-- **`FortuvaBot.spec`** - PyInstaller spec for Windows
-- **`FortuvaBot-mac.spec`** - PyInstaller spec for macOS
-- **`FortuvaBot-linux.spec`** - PyInstaller spec for Linux
+- **`FortuvaEngine.spec`** - PyInstaller spec for Windows
+- **`FortuvaEngine-mac.spec`** - PyInstaller spec for macOS
+- **`FortuvaEngine-linux.spec`** - PyInstaller spec for Linux
 
 ## Quick Usage
 
@@ -49,22 +49,22 @@ python build_scripts/build_appimage.py
 ### build_windows.py
 1. Checks for PyInstaller installation
 2. Cleans previous builds
-3. Runs PyInstaller with `FortuvaBot.spec`
-4. Creates `dist/FortuvaBot/FortuvaBot.exe`
+3. Runs PyInstaller with `FortuvaEngine.spec`
+4. Creates `dist/FortuvaEngine/FortuvaEngine.exe`
 5. Shows build results and distribution instructions
 
 ### build_macos.py
 1. Verifies you're running on macOS (warns if not)
 2. Cleans previous builds
-3. Runs PyInstaller with `FortuvaBot-mac.spec`
-4. Creates `dist/FortuvaBot.app` application bundle
+3. Runs PyInstaller with `FortuvaEngine-mac.spec`
+4. Creates `dist/FortuvaEngine.app` application bundle
 5. Provides code signing instructions
 
 ### build_linux.py
 1. Checks platform
 2. Cleans previous builds
-3. Runs PyInstaller with `FortuvaBot-linux.spec`
-4. Creates `dist/FortuvaBot/FortuvaBot` binary
+3. Runs PyInstaller with `FortuvaEngine-linux.spec`
+4. Creates `dist/FortuvaEngine/FortuvaEngine` binary
 5. Makes binary executable (chmod +x)
 
 ### build_appimage.py
@@ -72,7 +72,7 @@ python build_scripts/build_appimage.py
 2. Downloads appimagetool if not present
 3. Creates AppDir structure
 4. Bundles executable with dependencies
-5. Creates `dist/FortuvaBot-x86_64.AppImage`
+5. Creates `dist/FortuvaEngine-x86_64.AppImage`
 6. Universal Linux package that works across distributions
 
 ## Prerequisites
@@ -106,19 +106,19 @@ After building, you'll have:
 
 ```
 dist/
-├── FortuvaBot/              # Windows/Linux folder
-│   ├── FortuvaBot(.exe)     # Main executable
+├── FortuvaEngine/              # Windows/Linux folder
+│   ├── FortuvaEngine(.exe)     # Main executable
 │   ├── _internal/           # Dependencies
 │   ├── icons/               # Resources
 │   └── img/                 # Images
 │
-├── FortuvaBot.app/          # macOS (if built on macOS)
+├── FortuvaEngine.app/          # macOS (if built on macOS)
 │   └── Contents/
 │       ├── MacOS/
 │       ├── Resources/
 │       └── Info.plist
 │
-└── FortuvaBot-x86_64.AppImage  # Linux AppImage (if built)
+└── FortuvaEngine-x86_64.AppImage  # Linux AppImage (if built)
 ```
 
 ## Customization
@@ -133,7 +133,7 @@ Edit the `.spec` files in the project root to:
 - Change icon
 - Modify code signing settings
 
-Example (FortuvaBot.spec):
+Example (FortuvaEngine.spec):
 ```python
 a = Analysis(
     ['main.py'],
@@ -215,7 +215,7 @@ exe = EXE(
     a.zipfiles,  # Include zipfiles
     a.datas,     # Include data files
     [],
-    name='FortuvaBot',
+    name='FortuvaEngine',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

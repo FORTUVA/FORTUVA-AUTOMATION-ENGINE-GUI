@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Linux Build Script for Fortuva Bot
+Linux Build Script for Fortuva Engine
 Builds a Linux executable using PyInstaller
 
 Requirements:
@@ -21,7 +21,7 @@ from pathlib import Path
 
 def main():
     print("=" * 60)
-    print("Building Fortuva Bot for Linux")
+    print("Building Fortuva Engine for Linux")
     print("=" * 60)
     
     # Check if running on Linux
@@ -48,7 +48,7 @@ def main():
         sys.exit(1)
     
     # Check if spec file exists
-    spec_file = project_root / "FortuvaBot-linux.spec"
+    spec_file = project_root / "FortuvaEngine-linux.spec"
     if not spec_file.exists():
         print(f"❌ Spec file not found: {spec_file}")
         sys.exit(1)
@@ -79,7 +79,7 @@ def main():
         result = subprocess.run(cmd, check=True, capture_output=False)
         
         # Check if executable was created (single file in dist/)
-        exe_path = project_root / "dist" / "FortuvaBot"
+        exe_path = project_root / "dist" / "FortuvaEngine"
         if exe_path.exists():
             # Make executable
             os.chmod(exe_path, 0o755)
@@ -92,13 +92,13 @@ def main():
             print(f"\n📊 Size: {exe_path.stat().st_size / (1024*1024):.2f} MB")
             
             print(f"\n💡 To distribute:")
-            print(f"   1. Copy the single 'FortuvaBot' file")
+            print(f"   1. Copy the single 'FortuvaEngine' file")
             print(f"   2. Or create an AppImage (see build_appimage.py)")
             print(f"   3. Or create DEB/RPM packages")
             
             print(f"\n🚀 To run:")
             print(f"   cd dist/")
-            print(f"   ./FortuvaBot")
+            print(f"   ./FortuvaEngine")
             
             print(f"\n⚠️  Important Notes:")
             print(f"   1. This binary is compiled for your specific Linux distribution")

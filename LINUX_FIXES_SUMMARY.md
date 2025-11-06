@@ -1,6 +1,6 @@
 # Linux Fixes Summary
 
-This document summarizes all fixes applied to make FortuvaBot work properly on Linux.
+This document summarizes all fixes applied to make FortuvaEngine work properly on Linux.
 
 ## Issues Fixed
 
@@ -20,14 +20,14 @@ Aborted (core dumped)
 
 **Fix Applied:**
 - ✅ Created `pyqt5_hook.py` runtime hook to configure Qt paths
-- ✅ Updated `FortuvaBot-linux.spec` to bundle Qt plugins explicitly
+- ✅ Updated `FortuvaEngine-linux.spec` to bundle Qt plugins explicitly
 - ✅ Disabled strip and UPX in build configuration
 - ✅ Added `PyQt5.QtDBus` for Linux integration
 - ✅ Created `install_linux_deps.sh` for automatic dependency installation
 
 **Files Changed:**
 - `pyqt5_hook.py` (NEW)
-- `FortuvaBot-linux.spec` (MODIFIED)
+- `FortuvaEngine-linux.spec` (MODIFIED)
 - `build_scripts/build_linux.py` (MODIFIED)
 
 ---
@@ -106,7 +106,7 @@ Extra Space:             ~55px ✅
 8. **`pyqt5_hook.py`** - Runtime hook for Qt configuration
 
 ### Modified Files
-- `FortuvaBot-linux.spec` - Qt plugin bundling and build options
+- `FortuvaEngine-linux.spec` - Qt plugin bundling and build options
 - `build_scripts/build_linux.py` - Added dependency information
 - `main.py` - Table sizing, scrollbar policies, logo size
 - `README.md` - Added Linux-specific section
@@ -129,7 +129,7 @@ Extra Space:             ~55px ✅
 ### For End Users
 
 - [ ] Run `./install_linux_deps.sh` to install dependencies
-- [ ] Launch application: `./FortuvaBot`
+- [ ] Launch application: `./FortuvaEngine`
 - [ ] Verify no Qt platform plugin errors
 - [ ] Check that "Latest Bets" table is fully visible
 - [ ] Add multiple bets and verify scrolling works
@@ -143,8 +143,8 @@ Extra Space:             ~55px ✅
 When distributing your Linux build:
 
 ```
-📦 FortuvaBot-Linux-v1.0/
-├── FortuvaBot                 # The executable
+📦 FortuvaEngine-linux-v1.0/
+├── FortuvaEngine                 # The executable
 ├── README_LINUX_USERS.md      # Installation guide
 ├── install_linux_deps.sh      # Dependency installer
 └── LICENSE                    # Your license file (optional)
@@ -154,16 +154,16 @@ When distributing your Linux build:
 
 ```bash
 # 1. Extract the package
-unzip FortuvaBot-Linux-v1.0.zip
-cd FortuvaBot-Linux-v1.0/
+unzip FortuvaEngine-linux-v1.0.zip
+cd FortuvaEngine-linux-v1.0/
 
 # 2. Install system dependencies
 chmod +x install_linux_deps.sh
 ./install_linux_deps.sh
 
 # 3. Run the application
-chmod +x FortuvaBot
-./FortuvaBot
+chmod +x FortuvaEngine
+./FortuvaEngine
 ```
 
 ---
@@ -217,7 +217,7 @@ xcb-util-renderutil libxkbcommon-x11 dbus mesa glib2
 |-------|----------|
 | `Could not load Qt platform plugin "xcb"` | Run `./install_linux_deps.sh` |
 | Table cut off | Already fixed - use latest version |
-| Permission denied | Run `chmod +x FortuvaBot` |
+| Permission denied | Run `chmod +x FortuvaEngine` |
 | Wayland warning | Ignore or set `QT_QPA_PLATFORM=wayland` |
 | Core dumped | Install system dependencies |
 | Distribution incompatibility | Build AppImage instead |
@@ -251,7 +251,7 @@ python main.py
 docker run -it --rm \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -e DISPLAY=$DISPLAY \
-  fortuvabot:latest
+  FortuvaEngine:latest
 ```
 - Fully isolated environment
 - Includes all dependencies
@@ -288,8 +288,8 @@ The size increase is acceptable for working functionality.
 ### For Issues
 If problems persist:
 1. Check distribution and version: `cat /etc/os-release`
-2. Run with debug: `QT_DEBUG_PLUGINS=1 ./FortuvaBot`
-3. Check missing libs: `ldd ./FortuvaBot | grep "not found"`
+2. Run with debug: `QT_DEBUG_PLUGINS=1 ./FortuvaEngine`
+3. Check missing libs: `ldd ./FortuvaEngine | grep "not found"`
 4. File an issue with output from above commands
 
 ---
@@ -326,7 +326,7 @@ If problems persist:
 
 ## Credits
 
-These fixes address common Qt cross-platform issues on Linux and ensure FortuvaBot works consistently across Windows, macOS, and Linux distributions.
+These fixes address common Qt cross-platform issues on Linux and ensure FortuvaEngine works consistently across Windows, macOS, and Linux distributions.
 
 For questions or issues, please refer to the documentation files listed above or file an issue in the repository.
 

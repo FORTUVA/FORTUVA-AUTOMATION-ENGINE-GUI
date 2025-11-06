@@ -1,6 +1,6 @@
 # Building Executables - Quick Start Guide
 
-This guide shows you how to create standalone executable files for Fortuva Bot that work on Windows, macOS, and Linux.
+This guide shows you how to create standalone executable files for Fortuva Engine that work on Windows, macOS, and Linux.
 
 ## 🚀 Quick Start
 
@@ -18,19 +18,19 @@ Choose the command for your operating system:
 ```bash
 python build_scripts/build_windows.py
 ```
-**Output:** `dist/FortuvaBot/FortuvaBot.exe`
+**Output:** `dist/FortuvaEngine/FortuvaEngine.exe`
 
 #### macOS
 ```bash
 python build_scripts/build_macos.py
 ```
-**Output:** `dist/FortuvaBot.app`
+**Output:** `dist/FortuvaEngine.app`
 
 #### Linux
 ```bash
 python build_scripts/build_linux.py
 ```
-**Output:** `dist/FortuvaBot/FortuvaBot`
+**Output:** `dist/FortuvaEngine/FortuvaEngine`
 
 **Or use the universal script** (auto-detects your OS):
 ```bash
@@ -42,23 +42,23 @@ python build_scripts/build_all.py
 ## 📦 What You Get
 
 ### Windows
-- **One-folder distribution** in `dist/FortuvaBot/`
-- Main executable: `FortuvaBot.exe`
+- **One-folder distribution** in `dist/FortuvaEngine/`
+- Main executable: `FortuvaEngine.exe`
 - Required DLLs and resources included
 - Users can run directly without Python installed
 - Size: ~50-100 MB
 
 ### macOS
-- **Application bundle**: `FortuvaBot.app`
+- **Application bundle**: `FortuvaEngine.app`
 - Can be dragged to Applications folder
 - Users can double-click to run
 - May need code signing to avoid Gatekeeper warnings
 - Size: ~60-120 MB
 
 ### Linux
-- **Standalone binary** in `dist/FortuvaBot/`
+- **Standalone binary** in `dist/FortuvaEngine/`
 - Includes all dependencies
-- Users may need to `chmod +x FortuvaBot`
+- Users may need to `chmod +x FortuvaEngine`
 - Create an AppImage for better compatibility (see below)
 - Size: ~50-100 MB
 
@@ -77,12 +77,12 @@ python build_scripts/build_linux.py
 python build_scripts/build_appimage.py
 ```
 
-**Output:** `dist/FortuvaBot-x86_64.AppImage`
+**Output:** `dist/FortuvaEngine-x86_64.AppImage`
 
 ### Distribute:
 - Single file that works everywhere
 - No installation required
-- Users just need: `chmod +x FortuvaBot-x86_64.AppImage && ./FortuvaBot-x86_64.AppImage`
+- Users just need: `chmod +x FortuvaEngine-x86_64.AppImage && ./FortuvaEngine-x86_64.AppImage`
 
 ---
 
@@ -105,19 +105,19 @@ Before building, ensure you have:
 ## 🎯 Distribution Tips
 
 ### Windows
-1. **Zip the folder**: Compress `dist/FortuvaBot/` folder
+1. **Zip the folder**: Compress `dist/FortuvaEngine/` folder
 2. **Create installer** (optional): Use NSIS or Inno Setup
 3. **Code signing** (optional): Sign with Microsoft Authenticode to avoid SmartScreen warnings
 
 ### macOS
-1. **Test the app**: Open `FortuvaBot.app` to verify it works
+1. **Test the app**: Open `FortuvaEngine.app` to verify it works
 2. **Create DMG** (optional):
    ```bash
-   hdiutil create -volname FortuvaBot -srcfolder dist/FortuvaBot.app -ov -format UDZO dist/FortuvaBot.dmg
+   hdiutil create -volname FortuvaEngine -srcfolder dist/FortuvaEngine.app -ov -format UDZO dist/FortuvaEngine.dmg
    ```
 3. **Code sign** (optional but recommended):
    ```bash
-   codesign --deep --force --verify --verbose --sign "Developer ID Application: Your Name" dist/FortuvaBot.app
+   codesign --deep --force --verify --verbose --sign "Developer ID Application: Your Name" dist/FortuvaEngine.app
    ```
 
 ### Linux
@@ -155,7 +155,7 @@ Then rebuild.
 The app is not code-signed. Users can bypass:
 1. Right-click on app → Open
 2. Click "Open" in the dialog
-3. Or run: `xattr -cr FortuvaBot.app`
+3. Or run: `xattr -cr FortuvaEngine.app`
 
 ### Linux: "error while loading shared libraries"
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Universal Build Script for Fortuva Bot
+Universal Build Script for Fortuva Engine
 Automatically detects platform and builds the appropriate executable
 
 Usage:
@@ -13,7 +13,7 @@ from pathlib import Path
 
 def main():
     print("=" * 60)
-    print("Fortuva Bot - Universal Build Script")
+    print("Fortuva Engine - Universal Build Script")
     print("=" * 60)
     
     # Detect platform

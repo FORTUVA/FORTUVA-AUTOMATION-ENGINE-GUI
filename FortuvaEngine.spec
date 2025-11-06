@@ -1,7 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 """
-PyInstaller spec file for macOS build of Fortuva Bot
-Usage: pyinstaller --clean modern-login-mac.spec
+PyInstaller spec file for Windows build of Fortuva Engine
+Usage: pyinstaller --clean modern-login.spec
 """
 from PyInstaller.utils.hooks import collect_all, collect_submodules
 
@@ -18,7 +18,7 @@ a = Analysis(
         ('icons', 'icons'),
         ('img', 'img'),
         ('icons_rc.py', '.'),
-        ('bot', 'bot'),
+        ('engine', 'engine'),
     ] + pyqt5_datas,
     hiddenimports=[
         'PyQt5',
@@ -32,7 +32,7 @@ a = Analysis(
         'base58',
         'requests',
         'plyer',
-        'plyer.platforms.macosx.notification',
+        'plyer.platforms.win.notification',
     ] + pyqt5_hiddenimports + collect_submodules('PyQt5'),
     hookspath=[],
     hooksconfig={},
@@ -51,17 +51,18 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='FortuvaBot',
+    name='FortuvaEngine',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False,
+    console=False,  # No console window for GUI app
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon='icons/fortuva.ico',  # Application icon
 )
 
 coll = COLLECT(
@@ -72,20 +73,6 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='FortuvaBot',
-)
-
-app = BUNDLE(
-    coll,
-    name='FortuvaBot.app',
-    icon='icons/fortuva.ico',  # Application icon
-    bundle_identifier='com.fortuva.bot',
-    info_plist={
-        'NSPrincipalClass': 'NSApplication',
-        'NSHighResolutionCapable': 'True',
-        'CFBundleShortVersionString': '1.0.0',
-        'CFBundleVersion': '1.0.0',
-        'NSHumanReadableCopyright': 'Copyright © 2025',
-    },
+    name='FortuvaEngine',
 )
 

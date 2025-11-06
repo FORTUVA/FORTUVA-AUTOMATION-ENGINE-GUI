@@ -1,6 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
 """
-PyInstaller spec file for Linux build of Fortuva Bot
+PyInstaller spec file for Linux build of Fortuva Engine
 Usage: pyinstaller --clean modern-login-linux.spec
 """
 from PyInstaller.utils.hooks import collect_all, collect_submodules
@@ -49,7 +49,7 @@ a = Analysis(
         ('icons', 'icons'),
         ('img', 'img'),
         ('icons_rc.py', '.'),
-        ('bot', 'bot'),
+        ('engine', 'engine'),
     ] + pyqt5_datas,
     hiddenimports=[
         'PyQt5',
@@ -85,7 +85,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='FortuvaBot',
+    name='FortuvaEngine',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,  # Don't strip - can break Qt plugins

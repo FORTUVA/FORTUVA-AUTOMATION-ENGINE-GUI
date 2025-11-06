@@ -1,6 +1,6 @@
 # Building Executables for All Operating Systems
 
-This guide will help you create standalone executable files for the Fortuva Bot application on Windows, macOS, and Linux.
+This guide will help you create standalone executable files for the Fortuva Engine application on Windows, macOS, and Linux.
 
 ## Prerequisites
 
@@ -39,14 +39,14 @@ pip install pyinstaller
 python build_scripts/build_windows.py
 
 # Or manually:
-pyinstaller --clean FortuvaBot.spec
+pyinstaller --clean FortuvaEngine.spec
 ```
 
-**Output:** `dist/FortuvaBot.exe` (single executable file)
+**Output:** `dist/FortuvaEngine.exe` (single executable file)
 
 **Distribution:** 
 - You can distribute just the `.exe` file
-- Alternatively, distribute the entire `dist/FortuvaBot/` folder if using one-folder mode
+- Alternatively, distribute the entire `dist/FortuvaEngine/` folder if using one-folder mode
 - Users can run it directly without Python installed
 
 ---
@@ -65,12 +65,12 @@ python build_scripts/build_macos.py
 pyinstaller --clean modern-login-mac.spec
 ```
 
-**Output:** `dist/FortuvaBot.app` (application bundle)
+**Output:** `dist/FortuvaEngine.app` (application bundle)
 
 **Code Signing (Optional but Recommended):**
 ```bash
 # Sign the app to avoid Gatekeeper warnings
-codesign --deep --force --verify --verbose --sign "Developer ID Application: Your Name" dist/FortuvaBot.app
+codesign --deep --force --verify --verbose --sign "Developer ID Application: Your Name" dist/FortuvaEngine.app
 ```
 
 **Distribution:**
@@ -94,7 +94,7 @@ python build_scripts/build_linux.py
 pyinstaller --clean modern-login-linux.spec
 ```
 
-**Output:** `dist/FortuvaBot` (standalone binary)
+**Output:** `dist/FortuvaEngine` (standalone binary)
 
 **Creating AppImage (Recommended for distribution):**
 ```bash
@@ -109,7 +109,7 @@ python build_scripts/build_appimage.py
 **Distribution:**
 - AppImage: Single file that runs on most Linux distributions
 - Binary: Works on similar Linux distributions (same glibc version)
-- Users may need to `chmod +x FortuvaBot` before running
+- Users may need to `chmod +x FortuvaEngine` before running
 
 ---
 
@@ -178,12 +178,12 @@ Some antivirus software may flag PyInstaller executables.
 ```
 dist/
 ├── Windows/
-│   └── FortuvaBot.exe           # Windows executable
+│   └── FortuvaEngine.exe           # Windows executable
 ├── macOS/
-│   └── FortuvaBot.app/          # macOS app bundle
+│   └── FortuvaEngine.app/          # macOS app bundle
 └── Linux/
-    ├── FortuvaBot               # Linux binary
-    └── FortuvaBot.AppImage      # AppImage (optional)
+    ├── FortuvaEngine               # Linux binary
+    └── FortuvaEngine.AppImage      # AppImage (optional)
 ```
 
 ---

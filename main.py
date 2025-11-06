@@ -3,7 +3,7 @@ from PyQt5 import QtCore, QtWidgets, QtGui
 import os
 
 import icons_rc  # pylint: disable=unused-import
-from bot.worker import BotWorker, BotConfig
+from engine.worker import BotWorker, BotConfig
 
 # Import for system notifications
 try:
@@ -185,7 +185,7 @@ class FortuvaForm(QtWidgets.QWidget):
 
         # removed legacy login/register form
 
-        # Bot configuration section
+        # Engine configuration section
         self.groupBox = QtWidgets.QGroupBox(self.settingsContentWidget)
         self.groupBox.setStyleSheet("color: rgb(231, 231, 231);\nfont: 13pt \"Verdana\";")
         self.formLayout_cfg = QtWidgets.QFormLayout(self.groupBox)
@@ -546,7 +546,7 @@ class FortuvaForm(QtWidgets.QWidget):
             "color: rgba(255, 255, 255, 0.4);"
             "}"
         )
-        self.enterUpButton.setEnabled(False)  # Disabled until bot places a bet
+        self.enterUpButton.setEnabled(False)  # Disabled until engine places a bet
         self.enterUpButton.clicked.connect(lambda: self._show_place_order("UP"))
         self.roundInfoLayout.addWidget(self.enterUpButton)
         
@@ -572,7 +572,7 @@ class FortuvaForm(QtWidgets.QWidget):
             "color: rgba(255, 255, 255, 0.4);"
             "}"
         )
-        self.enterDownButton.setEnabled(False)  # Disabled until bot places a bet
+        self.enterDownButton.setEnabled(False)  # Disabled until engine places a bet
         self.enterDownButton.clicked.connect(lambda: self._show_place_order("DOWN"))
         self.roundInfoLayout.addWidget(self.enterDownButton)
         
@@ -1003,7 +1003,7 @@ class FortuvaForm(QtWidgets.QWidget):
 
     # Settings persistence helpers
     def _settings(self):
-        return QtCore.QSettings("fortuva", "bot-config")
+        return QtCore.QSettings("fortuva", "engine-config")
 
     def save_settings(self):
         s = self._settings()
@@ -1081,17 +1081,17 @@ class FortuvaForm(QtWidgets.QWidget):
         else:
             super().mouseReleaseEvent(event)
 
-    # Bot start/stop handlers
+    # Engine start/stop handlers
     def _on_start_stop(self, checked: bool):
         self.startStopButton.setText("Stop" if checked else "Start")
         if checked:
             self.start_bot()
-            # Enable manual betting buttons when bot starts
+            # Enable manual betting buttons when engine starts
             self.enterUpButton.setEnabled(True)
             self.enterDownButton.setEnabled(True)
         else:
             self.stop_bot()
-            # Disable manual betting buttons when bot stops
+            # Disable manual betting buttons when engine stops
             self.enterUpButton.setEnabled(False)
             self.enterDownButton.setEnabled(False)
 
@@ -1104,7 +1104,7 @@ class FortuvaForm(QtWidgets.QWidget):
         # Try to load initial bets if wallet is available
         if wallet.get("seed_or_private"):
             try:
-                from bot.blockchain import create_keypair_from_private_key
+                from engine.blockchain import create_keypair_from_private_key
                 keypair = create_keypair_from_private_key(wallet["seed_or_private"])
                 wallet_address = str(keypair.pubkey())
                 # Load bets asynchronously
@@ -1191,7 +1191,7 @@ class FortuvaForm(QtWidgets.QWidget):
                 
                 print("[DEBUG] Bet placing started - buttons disabled")
             else:
-                # Re-enable buttons when done (if bot is running and no bet exists)
+                # Re-enable buttons when done (if engine is running and no bet exists)
                 worker = getattr(self, "_bot_worker", None)
                 bot_running = worker is not None and worker.isRunning()
                 
@@ -1217,17 +1217,17 @@ class FortuvaForm(QtWidgets.QWidget):
             print(f"Error showing claim notification: {e}")
     
     def _on_bot_stopped(self):
-        """Handle bot stopped event - reset state."""
+        """Handle engine stopped event - reset state."""
         self.startStopButton.setChecked(False)
-        # Disable Enter UP/DOWN buttons when bot stops
+        # Disable Enter UP/DOWN buttons when engine stops
         self.enterUpButton.setEnabled(False)
         self.enterDownButton.setEnabled(False)
     
     def _on_auto_bet_changed(self, state: int):
-        """Handle Auto Bet checkbox state change - update running bot."""
+        """Handle Auto Bet checkbox state change - update running engine"""
         is_checked = (state == QtCore.Qt.Checked)
         
-        # Update running bot's config if bot is running
+        # Update running engine's config if engine is running
         worker = getattr(self, "_bot_worker", None)
         if worker is not None and worker.isRunning():
             if hasattr(worker, 'betting_service') and worker.betting_service:
@@ -1270,7 +1270,7 @@ class FortuvaForm(QtWidgets.QWidget):
         
         def fetch_and_update():
             try:
-                from bot.api import FortuvaApi
+                from engine.api import FortuvaApi
                 api = FortuvaApi()
                 # Fetch bets from API
                 bets = api.get_user_bets(wallet_address)
@@ -1428,7 +1428,7 @@ class FortuvaForm(QtWidgets.QWidget):
                 self.update_latest_bets(wallet_address)
             
             # Update Enter UP/DOWN button state based on whether bet exists
-            # Only enable if bot is running AND no bet exists for current round
+            # Only enable if engine is running AND no bet exists for current round
             worker = getattr(self, "_bot_worker", None)
             bot_running = worker is not None and worker.isRunning()
             
@@ -1728,7 +1728,7 @@ class FortuvaForm(QtWidgets.QWidget):
                 self._append_log(f"❌ Amount must be greater than 0")
                 return
             
-            # Send manual bet to bot worker if running
+            # Send manual bet to engine worker if running
             worker = getattr(self, "_bot_worker", None)
             if worker is not None and worker.isRunning():
                 # Get current round from UI
@@ -1745,7 +1745,7 @@ class FortuvaForm(QtWidgets.QWidget):
                 except Exception as e:
                     self._append_log(f"⚠️  Could not place bet: {e}")
             else:
-                self._append_log(f"⚠️  Bot is not running. Start the bot first.")
+                self._append_log(f"⚠️  Engine is not running. Start the engine first.")
             
             # Go back to round card
             self._show_round_card()
@@ -1813,9 +1813,9 @@ class FortuvaForm(QtWidgets.QWidget):
         if SYSTEM_NOTIFICATIONS_AVAILABLE:
             try:
                 system_notification.notify(
-                    title=f"Fortuva Bot - {title}",
+                    title=f"Fortuva Engine - {title}",
                     message=message,
-                    app_name="Fortuva Bot",
+                    app_name="Fortuva Engine",
                     timeout=4  # Duration in seconds
                 )
             except Exception as e:

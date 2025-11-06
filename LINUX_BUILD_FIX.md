@@ -23,7 +23,7 @@ A runtime hook that runs when the executable starts and:
 - Configures `LD_LIBRARY_PATH` for Qt libraries
 - Forces X11 backend (`QT_QPA_PLATFORM=xcb`) to avoid Wayland issues
 
-### 2. Updated Linux Spec File (`FortuvaBot-linux.spec`)
+### 2. Updated Linux Spec File (`FortuvaEngine-linux.spec`)
 
 Changes made:
 - **Added explicit Qt plugin collection** - Now bundles platform plugins (xcb, wayland) and xcbglintegrations
@@ -86,8 +86,8 @@ sudo apt-get install -y libxcb-xinerama0 libxcb-icccm4 libxcb-image0 \
 When distributing your Linux build, include:
 
 ```
-FortuvaBot/
-├── FortuvaBot              # The executable
+FortuvaEngine/
+├── FortuvaEngine              # The executable
 ├── README_LINUX_USERS.md   # User guide
 └── install_linux_deps.sh   # Dependency installer
 ```
@@ -102,7 +102,7 @@ FortuvaBot/
    - `LINUX_BUILD_FIX.md` - This document
 
 2. **Modified:**
-   - `FortuvaBot-linux.spec` - Updated Qt plugin handling and build options
+   - `FortuvaEngine-linux.spec` - Updated Qt plugin handling and build options
    - `build_scripts/build_linux.py` - Added dependency information in output
 
 ## Testing
@@ -112,7 +112,7 @@ Test the new build on a clean Linux system:
 1. Build on your development machine
 2. Copy the executable to a fresh Linux VM or system
 3. Run the dependency installer: `./install_linux_deps.sh`
-4. Run the executable: `./FortuvaBot`
+4. Run the executable: `./FortuvaEngine`
 
 ## Known Limitations
 
@@ -151,14 +151,14 @@ To verify the fix worked:
 
 ```bash
 # Check if Qt plugins are bundled
-./FortuvaBot --version  # or just try running it
+./FortuvaEngine --version  # or just try running it
 
 # If it still fails, check what's missing:
 export QT_DEBUG_PLUGINS=1
-./FortuvaBot
+./FortuvaEngine
 
 # Check library dependencies
-ldd ./FortuvaBot | grep "not found"
+ldd ./FortuvaEngine | grep "not found"
 ```
 
 ## Additional Resources
@@ -172,8 +172,8 @@ ldd ./FortuvaBot | grep "not found"
 If users still have issues after following these instructions, ask them to provide:
 
 1. Linux distribution and version: `cat /etc/os-release`
-2. Output of: `QT_DEBUG_PLUGINS=1 ./FortuvaBot`
-3. Output of: `ldd ./FortuvaBot | grep "not found"`
+2. Output of: `QT_DEBUG_PLUGINS=1 ./FortuvaEngine`
+3. Output of: `ldd ./FortuvaEngine | grep "not found"`
 
 This will help diagnose any remaining issues.
 

@@ -1,4 +1,4 @@
-# Python Bot Implementation - Complete Summary
+# Python Engine Implementation - Complete Summary
 
 ## ✅ Implementation Status: **COMPLETE**
 
@@ -8,14 +8,14 @@ All TypeScript logic has been fully implemented in Python, matching the function
 
 ### New Files Created
 
-1. **`bot/blockchain.py`** (520 lines)
+1. **`engine/blockchain.py`** (520 lines)
    - Solana/Anchor blockchain integration
    - PDA generation functions
    - Account fetching and parsing (config, round, user_bet)
    - Transaction builders (placeBet, claimPayout, cancelBet, closeBet)
    - Wallet keypair creation from multiple formats
 
-2. **`bot/betting_service.py`** (344 lines)
+2. **`engine/betting_service.py`** (344 lines)
    - Full betting strategy implementation
    - GENERAL and PAYOUT modes
    - Martingale bet calculation
@@ -23,29 +23,29 @@ All TypeScript logic has been fully implemented in Python, matching the function
    - Dual loops (show_message_loop, execute_bet_loop)
    - Safety checks and balance validation
 
-3. **`bot/claim_service.py`** (95 lines)
+3. **`engine/claim_service.py`** (95 lines)
    - Automatic reward claiming
    - API integration for claimable bets
    - Transaction signing and submission
    - 60-second loop
 
-4. **`bot/cancel_service.py`** (120 lines)
+4. **`engine/cancel_service.py`** (120 lines)
    - Automatic bet cancellation from cancelled rounds
    - Refund tracking
    - API integration for cancelable bets
    - 60-second loop
 
-5. **`bot/close_service.py`** (110 lines)
+5. **`engine/close_service.py`** (110 lines)
    - Automatic bet account closing
    - Rent reclamation
    - API integration for closeable bets
    - 60-second loop
 
-6. **`bot/__init__.py`** (9 lines)
+6. **`engine/__init__.py`** (9 lines)
    - Package initialization
    - Clean exports
 
-7. **`bot/README.md`** (Comprehensive documentation)
+7. **`engine/README.md`** (Comprehensive documentation)
    - Architecture overview
    - Feature descriptions
    - Configuration guide
@@ -57,7 +57,7 @@ All TypeScript logic has been fully implemented in Python, matching the function
 
 ### Updated Files
 
-1. **`bot/worker.py`** (Complete rewrite, 194 lines)
+1. **`engine/worker.py`** (Complete rewrite, 194 lines)
    - Orchestrates all services
    - Async/await integration with PyQt5
    - Service initialization and lifecycle management
@@ -70,21 +70,21 @@ All TypeScript logic has been fully implemented in Python, matching the function
    - `base58>=2.1.1`
    - `requests>=2.31.0`
 
-3. **`bot/api.py`** (Already existed, unchanged)
+3. **`engine/api.py`** (Already existed, unchanged)
    - Fortuva API client implementation
 
 ## 🎯 Feature Mapping: TypeScript → Python
 
 | TypeScript File | Python Equivalent | Status |
 |----------------|-------------------|--------|
-| `ts/core/FortuvaBot.ts` | `bot/worker.py` | ✅ Complete |
-| `ts/services/BettingService.ts` | `bot/betting_service.py` | ✅ Complete |
-| `ts/services/ClaimService.ts` | `bot/claim_service.py` | ✅ Complete |
-| `ts/services/CancelService.ts` | `bot/cancel_service.py` | ✅ Complete |
-| `ts/services/CloseService.ts` | `bot/close_service.py` | ✅ Complete |
-| `ts/utils/blockchain.ts` | `bot/blockchain.py` | ✅ Complete |
-| `ts/utils/helpers.ts` | `bot/blockchain.py` (integrated) | ✅ Complete |
-| `ts/api/fortuvaApi.ts` | `bot/api.py` | ✅ Already existed |
+| `ts/core/FortuvaEngine.ts` | `engine/worker.py` | ✅ Complete |
+| `ts/services/BettingService.ts` | `engine/betting_service.py` | ✅ Complete |
+| `ts/services/ClaimService.ts` | `engine/claim_service.py` | ✅ Complete |
+| `ts/services/CancelService.ts` | `engine/cancel_service.py` | ✅ Complete |
+| `ts/services/CloseService.ts` | `engine/close_service.py` | ✅ Complete |
+| `ts/utils/blockchain.ts` | `engine/blockchain.py` | ✅ Complete |
+| `ts/utils/helpers.ts` | `engine/blockchain.py` (integrated) | ✅ Complete |
+| `ts/api/fortuvaApi.ts` | `engine/api.py` | ✅ Already existed |
 | `ts/services/Logger.ts` | Built into each service | ✅ Complete |
 | `ts/services/InputHandler.ts` | Not implemented (GUI-based) | ⏭️ Skipped |
 | `ts/services/UserInputService.ts` | Not implemented (GUI-based) | ⏭️ Skipped |
@@ -202,16 +202,16 @@ All TypeScript logic has been fully implemented in Python, matching the function
    - Set multipliers for martingale
    - Set directions (UP/DOWN)
 
-4. **Start the bot:**
+4. **Start the engine:**
    - Click "Start" button
    - Monitor logs in GUI panel
-   - Bot will auto-bet, claim, cancel, close
+   - Engine will auto-bet, claim, cancel, close
 
 ## 🔄 Workflow
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Bot Worker (main thread)                  │
+│                    Engine Worker (main thread)                  │
 │                                                              │
 │  ┌──────────────────────────────────────────────────────┐  │
 │  │            Initialize Services                        │  │

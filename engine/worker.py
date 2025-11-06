@@ -1,4 +1,4 @@
-"""Bot worker with full TypeScript implementation."""
+"""Engine worker with full TypeScript implementation."""
 
 from __future__ import annotations
 
@@ -45,7 +45,7 @@ class BotConfig:
 
 
 class BotWorker(QtCore.QThread):
-    """Bot worker that orchestrates all betting, claiming, canceling, and closing services."""
+    """Engine worker that orchestrates all betting, claiming, canceling, and closing services."""
     
     status = QtCore.pyqtSignal(str)
     round_update = QtCore.pyqtSignal(dict)  # Signal for round card updates
@@ -74,7 +74,7 @@ class BotWorker(QtCore.QThread):
         self._manual_bet_lock = threading.Lock()
 
     def stop(self) -> None:
-        """Stop the bot."""
+        """Stop the engine"""
         self._stop_event.set()
 
     def _log(self, message: str) -> None:
@@ -137,7 +137,7 @@ class BotWorker(QtCore.QThread):
             raise
 
     async def _initialize_services(self) -> None:
-        """Initialize all bot services."""
+        """Initialize all engine services."""
         try:
             # Create Solana RPC client
             self.client = AsyncClient(self.config.rpc_url, commitment=Confirmed)
@@ -245,7 +245,7 @@ class BotWorker(QtCore.QThread):
     async def _async_run(self) -> None:
         """Main async run method."""
         try:
-            self._log("🚀 Bot started")
+            self._log("🚀 Engine started")
             self._log(f"⚙️  Config: RPC={self.config.rpc_url}")
             self._log(f"⚙️  Interval: {self.config.interval_time}s, Bet Time: {self.config.bet_time}s")
             self._log(f"⚙️  Even: {self.config.even_min_bet}-{self.config.even_max_bet} SOL, "
@@ -262,7 +262,7 @@ class BotWorker(QtCore.QThread):
             # Initialize services
             await self._initialize_services()
             
-            self._log("🎮 Starting bot services...")
+            self._log("🎮 Starting engine services...")
             
             # Run betting and maintenance loops concurrently
             await asyncio.gather(
@@ -273,13 +273,13 @@ class BotWorker(QtCore.QThread):
             )
         
         except Exception as e:
-            self._log(f"❌ Bot error: {e}")
+            self._log(f"❌ Engine error: {e}")
         
         finally:
             # Cleanup
             if self.client:
                 await self.client.close()
-            self._log("🛑 Bot stopped")
+            self._log("🛑 Engine stopped")
 
     def run(self) -> None:
         """Qt thread run method - bridges sync and async."""
