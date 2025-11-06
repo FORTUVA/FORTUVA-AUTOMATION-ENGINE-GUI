@@ -387,12 +387,6 @@ See [Troubleshooting Section](BUILDING_EXECUTABLES.md#-troubleshooting) in build
 
 ---
 
-## 📄 License
-
-See [LICENSE](LICENSE) file for details.
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
