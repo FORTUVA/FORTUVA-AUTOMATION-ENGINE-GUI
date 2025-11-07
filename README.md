@@ -219,9 +219,12 @@ sudo apt-get install -y libxcb-xinerama0 libxcb-icccm4 libxcb-image0 \
 ### Settings Location
 
 Settings are automatically saved to:
-- **Windows**: `%APPDATA%\modern-login\engine-config.ini`
-- **macOS**: `~/Library/Preferences/com.modern-login.engine-config.plist`
-- **Linux**: `~/.config/modern-login/engine-config.conf`
+- **Windows**: `%APPDATA%\FORTUVA-AUTOMATION-ENGINE-GUI
+\engine-config.ini`
+- **macOS**: `~/Library/Preferences/com.FORTUVA-AUTOMATION-ENGINE-GUI
+.engine-config.plist`
+- **Linux**: `~/.config/FORTUVA-AUTOMATION-ENGINE-GUI
+/engine-config.conf`
 
 ### Configuration Options
 
@@ -258,7 +261,8 @@ Options:
 ## 📁 Project Structure
 
 ```
-modern-login/
+FORTUVA-AUTOMATION-ENGINE-GUI
+/
 ├── engine/                  # Engine logic modules
 │   ├── api.py               # Fortuva API client
 │   ├── betting_service.py   # Prediction logic
@@ -277,7 +281,8 @@ modern-login/
 ├── img/                     # Images and assets
 ├── ts/                      # TypeScript version (reference)
 ├── main.py                  # Main application
-├── modern-login*.spec       # PyInstaller specs
+├── FORTUVA-AUTOMATION-ENGINE-GUI
+*.spec       # PyInstaller specs
 ├── requirements.txt         # Python dependencies
 └── requirements-build.txt   # Build dependencies
 ```
@@ -415,7 +420,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 - PyQt5 for the GUI framework
 - Solana for the blockchain platform
-- Original modern-login template
+- Original FORTUVA-AUTOMATION-ENGINE-GUI
+ template
 - All contributors and testers
 
 ---

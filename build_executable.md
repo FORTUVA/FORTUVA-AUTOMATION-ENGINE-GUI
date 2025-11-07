@@ -62,7 +62,8 @@ pip install pyinstaller
 python build_scripts/build_macos.py
 
 # Or manually:
-pyinstaller --clean modern-login-mac.spec
+pyinstaller --clean FORTUVA-AUTOMATION-ENGINE-GUI
+-mac.spec
 ```
 
 **Output:** `dist/FortuvaEngine.app` (application bundle)
@@ -91,7 +92,8 @@ pip install pyinstaller
 python build_scripts/build_linux.py
 
 # Or manually:
-pyinstaller --clean modern-login-linux.spec
+pyinstaller --clean FORTUVA-AUTOMATION-ENGINE-GUI
+-linux.spec
 ```
 
 **Output:** `dist/FortuvaEngine` (standalone binary)

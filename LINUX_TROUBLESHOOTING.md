@@ -93,7 +93,8 @@ If the pre-built binary doesn't work on your distribution, rebuild it locally:
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd modern-login
+cd FORTUVA-AUTOMATION-ENGINE-GUI
+
 
 # Install Python dependencies
 pip install -r requirements.txt

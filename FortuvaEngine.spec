@@ -1,7 +1,8 @@
 # -*- mode: python ; coding: utf-8 -*-
 """
 PyInstaller spec file for Windows build of Fortuva Engine
-Usage: pyinstaller --clean modern-login.spec
+Usage: pyinstaller --clean FORTUVA-AUTOMATION-ENGINE-GUI
+.spec
 """
 from PyInstaller.utils.hooks import collect_all, collect_submodules
 
